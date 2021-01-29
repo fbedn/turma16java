@@ -11,7 +11,7 @@ public class MiniSistemaBancario {
 
 		while (opcaoExterna == 1) {
 
-			int opcao = 0;
+			char opcao;
 
 			while (true) {
 
@@ -27,34 +27,34 @@ public class MiniSistemaBancario {
 						+ "6 - SAIR\n\n"
 						+ "SELECIONE O TIPO DE CONTA: ");
 
-				opcao = ler.nextInt();
+				opcao = ler.next().charAt(0);
 
-				if (opcao == 1) {
+				if (opcao == '1') {
 					
 					System.out.println("\nCONTA POUPANÇA");
 					//saldo = menuContaPoupanca(ler, saldo);
 				}
-				else if (opcao == 2) {
+				else if (opcao == '2') {
 					
 					System.out.println("\nCONTA CORRENTE");
 					menuContaCorrente(ler);
 				}
-				else if (opcao == 3) {
+				else if (opcao == '3') {
 					
 					System.out.println("\nCONTA ESPECIAL ");
 					menuContaEspecial(ler);
 				}
-				else if (opcao == 4) {
+				else if (opcao == '4') {
 					
 					System.out.println("\nCONTA EMPRESA");
 					//menuContaEmpresa(ler);
 				}
-				else if (opcao == 5) {
+				else if (opcao == '5') {
 					
 					System.out.println("\nCONTA ESTUDANTIL");
 					//menuContaEstudantil(ler);
 				}
-				else if (opcao == 6) {
+				else if (opcao == '6') {
 					
 					System.out.print("SAINDO DA SUA CONTA...");
 					break; // sai do loop
