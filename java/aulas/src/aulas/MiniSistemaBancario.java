@@ -172,13 +172,12 @@ public class MiniSistemaBancario {
 				break;
 			}
 		}
-		do{
-			total+=limite;
 			System.out.println("Ok, agora vamos falar sobre se limite especial.\nO seu saldo é de "+total);
 			
 			System.out.print("Você deseja usar seu limite? S/N ");
-			opcao = ler.next().charAt(0);
-			if(opcao=='S' || opcao=='s') {
+			recomecar = ler.next().charAt(0);
+			
+			while (recomecar=='S' || recomecar=='s') {
 				System.out.print("Quanto do limite você deseja usar? ");
 				limite = ler.nextDouble();
 				soma +=limite;
@@ -198,8 +197,8 @@ public class MiniSistemaBancario {
 					System.out.print("\nDesejar usar o limite novamente?");
 					recomecar = ler.next().charAt(0);
 				}
+				total+=limite;
 			}
-			}while(recomecar=='s' || recomecar=='S');
 		
 		System.out.println("Obrigada por usar nossos serviços!");
 		
