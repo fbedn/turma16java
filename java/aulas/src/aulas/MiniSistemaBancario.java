@@ -7,62 +7,55 @@ public class MiniSistemaBancario {
 	public static void main(String[] args) {
 		Scanner ler = new Scanner(System.in);
 
-		int opcaoExterna = 1;
+		char opcao;
 
-		while (opcaoExterna == 1) {
+		while (true) {
 
-			char opcao;
+			System.out.print("NOME DO BANCO G#"
+					+ "\nSLOGAN - FRASE"
+					+ "\n"
+					+ "\n"
+					+ "1 - CONTA POUPANÇA\n"
+					+ "2 - CONTA CORRENTE\n"
+					+ "3 - CONTA ESPECIAL\n"
+					+ "4 - CONTA EMPRESA\n"
+					+ "5 - CONTA ESTUDANTIL\n"
+					+ "6 - SAIR\n\n"
+					+ "SELECIONE O TIPO DE CONTA: ");
 
-			while (true) {
+			opcao = ler.next().charAt(0);
 
-				System.out.print("NOME DO BANCO G#"
-						+ "\nSLOGAN - FRASE"
-						+ "\n"
-						+ "\n"
-						+ "1 - CONTA POUPANÇA\n"
-						+ "2 - CONTA CORRENTE\n"
-						+ "3 - CONTA ESPECIAL\n"
-						+ "4 - CONTA EMPRESA\n"
-						+ "5 - CONTA ESTUDANTIL\n"
-						+ "6 - SAIR\n\n"
-						+ "SELECIONE O TIPO DE CONTA: ");
-
-				opcao = ler.next().charAt(0);
-
-				if (opcao == '1') {
-					
-					System.out.println("\nCONTA POUPANÇA");
-					//saldo = menuContaPoupanca(ler, saldo);
-				}
-				else if (opcao == '2') {
-					
-					System.out.println("\nCONTA CORRENTE");
-					menuContaCorrente(ler);
-				}
-				else if (opcao == '3') {
-					
-					System.out.println("\nCONTA ESPECIAL ");
-					menuContaEspecial(ler);
-				}
-				else if (opcao == '4') {
-					
-					System.out.println("\nCONTA EMPRESA");
-					//menuContaEmpresa(ler);
-				}
-				else if (opcao == '5') {
-					
-					System.out.println("\nCONTA ESTUDANTIL");
-					//menuContaEstudantil(ler);
-				}
-				else if (opcao == '6') {
-					
-					System.out.print("SAINDO DA SUA CONTA...");
-					break; // sai do loop
-				}
-				System.out.println("\n");
+			if (opcao == '1') {
+				
+				System.out.println("\nCONTA POUPANÇA");
+				//saldo = menuContaPoupanca(ler, saldo);
 			}
-			System.out.println("\nDESEJA ACESSAR O BANCO COM OUTRO USUÁRIO? [1 - SIM / 2 - NÃO]");
-			opcaoExterna = ler.nextInt();
+			else if (opcao == '2') {
+				
+				System.out.println("\nCONTA CORRENTE");
+				menuContaCorrente(ler);
+			}
+			else if (opcao == '3') {
+				
+				System.out.println("\nCONTA ESPECIAL ");
+				menuContaEspecial(ler);
+			}
+			else if (opcao == '4') {
+				
+				System.out.println("\nCONTA EMPRESA");
+				//menuContaEmpresa(ler);
+			}
+			else if (opcao == '5') {
+				
+				System.out.println("\nCONTA ESTUDANTIL");
+				//menuContaEstudantil(ler);
+			}
+			else if (opcao == '6') {
+				
+				System.out.print("SAINDO DA SUA CONTA...");
+				break; // sai do loop
+			}
+			System.out.println("\n");
 		}
 
 		ler.close();
