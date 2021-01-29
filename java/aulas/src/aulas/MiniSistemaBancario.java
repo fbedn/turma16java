@@ -133,7 +133,7 @@ public class MiniSistemaBancario {
 		do {
 			System.out.println("Você deseja D - debitar ou C - creditar o valor da conta?");
 			debtar = ler.next().charAt(0);
-			if (debtar == 'c' || debtar == 'D') {
+			if (debtar == 'c' || debtar == 'C') {
 				System.out.println("Qual o valor?");
 				valor = ler.nextDouble();
 				saldo += valor;
@@ -155,7 +155,7 @@ public class MiniSistemaBancario {
 				System.out.printf("Ok, seu saldo é %.2f. Deseja continuar? S/N\n", saldo);
 				continuar = ler.next().charAt(0);
 			}
-		} while (continuar == 's' || continuar == 's');
+		} while (continuar == 's' || continuar == 'S');
 		
 		do {
 			saldo += limite;
