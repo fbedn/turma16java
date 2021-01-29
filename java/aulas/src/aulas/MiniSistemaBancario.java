@@ -170,15 +170,15 @@ public class MiniSistemaBancario {
 					continuar = ler.next().charAt(0);
 				}
 				else {
-					System.out.printf("Ok, seu saldo é %.2f. Deseja parar? S/N ", total);
+					System.out.printf("Ok, seu saldo é %.2f. Deseja realizar outra operação na sua conta poupança? S/N ", total);
 					continuar = ler.next().charAt(0);
 					
 				}
 			}while(continuar=='s' || continuar == 'S'); 
-			if (continuar == 'N')
-					{
-						break;
-					}
+			if (continuar == 'N' || continuar == 'n')
+			{
+				break;
+			}
 		}
 		do{
 			total+=limite;
