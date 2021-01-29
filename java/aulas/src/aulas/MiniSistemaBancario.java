@@ -12,7 +12,6 @@ public class MiniSistemaBancario {
 		while (opcaoExterna == 1) {
 
 			int opcao = 0;
-			double saldo = 0;
 
 			while (true) {
 
@@ -38,22 +37,22 @@ public class MiniSistemaBancario {
 				else if (opcao == 2) {
 					
 					System.out.println("\nCONTA CORRENTE");
-					saldo = menuContaCorrente(ler, saldo);
+					menuContaCorrente(ler);
 				}
 				else if (opcao == 3) {
 					
 					System.out.println("\nCONTA ESPECIAL ");
-					saldo = menuContaEspecial(ler, saldo);
+					menuContaEspecial(ler);
 				}
 				else if (opcao == 4) {
 					
 					System.out.println("\nCONTA EMPRESA");
-					//saldo = menuContaEmpresa(ler, saldo);
+					//menuContaEmpresa(ler);
 				}
 				else if (opcao == 5) {
 					
 					System.out.println("\nCONTA ESTUDANTIL");
-					//saldo = menuContaEstudantil(ler, saldo);
+					//menuContaEstudantil(ler);
 				}
 				else if (opcao == 6) {
 					
@@ -70,7 +69,9 @@ public class MiniSistemaBancario {
 	}
 	
 	/***FUNÇÃO DO MENU CONTA CORRENTE***/
-	static double menuContaCorrente(Scanner ler, double saldo) {
+	static void menuContaCorrente(Scanner ler) {
+		
+		double saldo = 0;
 		
 		int taloesEmitidos;
 		
@@ -132,15 +133,13 @@ public class MiniSistemaBancario {
 			}
 			
 		}
-		return saldo;
 	}
 
 	/***FUNÇÃO DO MENU CONTA ESPECIAL***/
-	static double menuContaEspecial(Scanner ler, double saldo) {
+	static void menuContaEspecial(Scanner ler) {
 		double total=0, limite=0, soma=0, valor = 0;
 		char opcao, recomecar = 's', debtar= 'd', continuar='s' ;
 		String descricao;
-		
 		
 		System.out.println("\nVocê selecionou a conta especial.");
 		for(int giro=0; giro<10; giro++) {
@@ -210,7 +209,6 @@ public class MiniSistemaBancario {
 			}while(recomecar=='s' || recomecar=='S');
 		
 		System.out.println("Obrigada por usar nossos serviços!");
-		return continuar;
 		
 	}
 }
