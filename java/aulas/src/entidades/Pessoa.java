@@ -5,6 +5,19 @@ public class Pessoa {
 	public String nome;
 	public char genero;
 	public int anoNascimento;
+	public boolean estaViva;
+	
+	public Pessoa() {
+	}
+	
+	public Pessoa(String nome) {
+		this.nome = nome;
+	}
+
+	public Pessoa(String nome, boolean estaViva) {
+		this.nome = nome;
+		this.estaViva = estaViva;
+	}
 
 	public int idade() {
 		return (2021 - anoNascimento);
