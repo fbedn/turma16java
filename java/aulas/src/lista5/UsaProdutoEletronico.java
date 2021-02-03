@@ -4,6 +4,13 @@ import java.util.Locale;
 import java.util.Scanner;
 
 public class UsaProdutoEletronico {
+	
+	/*
+	 * EXERCÍCIO 3
+	 * Crie uma classe produto eletrônico e apresente os atributos e métodos referentes esta classe.
+	 * Em seguida crie um objeto produto eletrônico, defina as instancias deste objeto e apresente as 
+	 * informações deste objeto no console.
+	 */
 
 	public static void main(String[] args) {
 		
