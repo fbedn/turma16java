@@ -28,7 +28,6 @@ public class UsaProdutoEletronico {
 			System.out.println("- - - "+(produto.getEnergizado()?"ENERGIZADO":"NÃO ENERGIZADO"));
 			System.out.println("- - - "+(produto.getLigado()?"LIGADO":"DESLIGADO"));
 			System.out.println("- - - "+(produto.getStandBy()?"EM STANDBY":"fora do standby"));
-			//System.out.println("Dados na entrada: "+produto.getDadosEntrada);
 			System.out.print("\nCOMANDOS:\n\n"
 								+ "e - energizar\t\t\t\t(OBS: eeste comando coloca na tomada ou bateria)\n"
 								+ "l - ligar\t\t\t\t(Obs: energizar antes de tentar ligar)\n"
