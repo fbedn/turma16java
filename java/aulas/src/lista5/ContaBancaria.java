@@ -29,9 +29,8 @@ public class ContaBancaria {
 	}
 	
 	protected void debitar(double valor) {
-		double result = saldo-valor;
-		if (result >= 0) { //verifica se a conta não fica negativa
-			saldo = result;
+		if (valor <= saldo) { //verifica se a conta não ficará negativa
+			saldo = saldo-valor;
 		}
 	}
 	
