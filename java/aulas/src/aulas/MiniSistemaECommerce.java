@@ -103,7 +103,7 @@ public class MiniSistemaECommerce {
 						System.out.print("\n\n***CÓDIGO DO PRODUTO NÃO ENCONTRADO***\n\n");
 					}
 				}
-				// comando para retirar um produto ao carrinho
+				// comando para exibir o carrinho
 				else if (comando == 'c') {
 					System.out.print("\n\n|\tCOD\t|\tPreço\t|   Seu Carrinho   |\tProduto Restante\t\n");
 					for (int i = 0; i < 10; i++) {
