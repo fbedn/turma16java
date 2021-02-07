@@ -141,7 +141,6 @@ public class Pedido {
 
 			subTotal += mult;
 		}
-		System.out.println("subTotal = "+subTotal);
 		return subTotal;
 	}
 		
