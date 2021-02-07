@@ -84,7 +84,7 @@ public class Estoque {
 	
 	public void imprimirLista() {
 		
-		System.out.print("\nCOD PRODUTO\tESTOQUE  \tPREÇO UNITÁRIO \t\tNOME DO PRODUTO\n");
+		System.out.print("\nPRODUTOS:\nCOD PRODUTO\tESTOQUE  \tPREÇO UNITÁRIO \t\tNOME DO PRODUTO\n");
 		for (Produto p : produtos) {
 			System.out.printf("%s \t\t %d \t\tR$ %.2f    \t\t%s\n", p.getCodigo(), p.getQuantidade(), p.getPrecoUnitario(), p.getNome());
 		}

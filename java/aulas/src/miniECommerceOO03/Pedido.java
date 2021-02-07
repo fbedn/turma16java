@@ -69,9 +69,9 @@ public class Pedido {
 	}
 	
 	public void imprimirCarrinho() {
-		System.out.print("\nCARINHO DE COMPRAS:\n\n|\tCOD\t|\tPreço\t|\tQuantidade\t|\tNome\n");
+		System.out.print("\nCARINHO DE COMPRAS:\nCOD PRODUTO\t|\tPreço unitário\t|\tQuantidade\t|\tNome\n");
 		for (Produto p : carrinho) {
-			System.out.print("|\t" + p.getCodigo() + "\t|\t" + p.getPrecoUnitario() + "\t|\t" + p.getQuantidade() +"\t\t|\t"+p.getNome()+"\n");
+			System.out.print(p.getCodigo() + "\t\t|\tR$ " + p.getPrecoUnitario() + "\t\t|\t" + p.getQuantidade() +"\t\t|\t"+p.getNome()+"\n");
 		}
 	}
 	
