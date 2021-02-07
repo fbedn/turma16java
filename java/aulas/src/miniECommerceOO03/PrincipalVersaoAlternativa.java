@@ -14,7 +14,7 @@ public class PrincipalVersaoAlternativa {
 		char comando;
 		String codProduto;
 		int qtdProduto;
-		char comandoExterno = 'n';
+		char comandoExterno;
 		do { //loop principal. Sempre que inicia, os dados do usuário começam zerados
 			Cliente cliente = new Cliente();
 			Pedido pedido = new Pedido();
@@ -92,11 +92,11 @@ public class PrincipalVersaoAlternativa {
 			} while (true);
 			
 			linha(90);
-			System.out.println("\nDESEJA SAIR DO PROGRAMA? [s/n]");
+			System.out.println("\nDESEJA REINICIAR O PROGRAMA? [s/n]");
 			comandoExterno = ler.next().toLowerCase().charAt(0);
 			ler.nextLine();
 			
-		} while (comandoExterno == 'n');
+		} while (comandoExterno == 's');
 		
 		ler.close();
 		System.out.println("\nPROGRAMA FINALIZADO");

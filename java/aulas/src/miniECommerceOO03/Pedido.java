@@ -45,22 +45,6 @@ public class Pedido {
 		return true;
 	}
 	
-	public void imprimirCarrinho() {
-		System.out.print("\n\n|\tCOD\t|\tPreço\t|   Quantidade No Seu Carrinho\n");
-		for (Produto p : carrinho) {
-			System.out.print("|\t" + p.getCodigo() + "\t|\t" + p.getPrecoUnitario() + "\t|\t" + p.getQuantidade() +"\n");
-		}
-		
-		/*
-		System.out.print("\n\n|\tCOD\t|\tPreço\t|   Seu Carrinho   |\tProduto Restante\t\n");
-		for (int i = 0; i < 10; i++) {
-			if (carrinhoCompras[i] != 0) {
-				System.out.print("|\t" + (i + 1) + "\t|\t" + precoProdutos[i] + "\t|\t" + carrinhoCompras[i] + "\t|\t" + estoque[i] + "\n");
-			}
-		}
-		*/
-	}
-	
 	public boolean removerProdutos(String codProduto, int iCarrinho, int qtdProduto, Estoque estoque) {
 		
 		if (qtdProduto < 0) return false;
@@ -84,12 +68,12 @@ public class Pedido {
 		return true;
 	}
 	
-	
-	
-	
-	
-	
-	
+	public void imprimirCarrinho() {
+		System.out.print("\nCARINHO DE COMPRAS:\n\n|\tCOD\t|\tPreço\t|\tQuantidade\t|\tNome\n");
+		for (Produto p : carrinho) {
+			System.out.print("|\t" + p.getCodigo() + "\t|\t" + p.getPrecoUnitario() + "\t|\t" + p.getQuantidade() +"\t\t|\t"+p.getNome()+"\n");
+		}
+	}
 	
 	
 	
@@ -116,7 +100,6 @@ public class Pedido {
 		
 		return true;
 	}
-	
 	
 	
 	//remove produtos sem informar índice do produto no carrinho

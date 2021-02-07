@@ -18,7 +18,7 @@ public class Cliente {
 		this.sexo = sexo;
 	}
 	
-	public String tratamento() {
+	public String tratamentoGenero() {
 		if (sexo == 'F') { //define o tratamento que o usuário será tratado
 			return "Sra.";
 		} else if (sexo == 'M') {
