@@ -6,6 +6,15 @@ import java.util.List;
 public class Pedido {
 	
 	private List <Produto> carrinho = new ArrayList<>();
+	private double subTotal = 0;
+	
+	public double getSubTotal() {
+		return subTotal;
+	}
+	
+	public void setSubTotal(double subTotal) {
+		this.subTotal = subTotal;
+	}
 	
 	public int encontrarIndice(String codProduto) {
 		int indice = -1;
@@ -123,6 +132,17 @@ public class Pedido {
 		if (adicionaAoEstoque == false) return false;
 		
 		return true;
+	}
+	
+	public double subTotal() {
+		
+		for(Produto calculando : carrinho) {
+			double mult = calculando.getQuantidade()*calculando.getPrecoUnitario();
+
+			subTotal += mult;
+		}
+		System.out.println("subTotal = "+subTotal);
+		return subTotal;
 	}
 		
 }

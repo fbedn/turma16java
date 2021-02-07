@@ -2,6 +2,8 @@ package miniECommerceOO03;
 
 import java.util.Scanner;
 
+import miniECommerceOO.Pagamento;
+
 public class Principal {
 
 public static void main(String[] args) {
@@ -109,13 +111,12 @@ public static void main(String[] args) {
 				}
 				// comando para finalizar a compra
 				else if (comando == 'f') {
-					boolean result = true; //pedido.pagamento(estoque, cliente);
-					if (result) // se result for verdadeiro, sai do loop do usuário
-						break;
-					else { // se result for falso, o carrinho está vazio, por isso não foi possível finalizar. Avisa isso ao usuário 
-						linha(90);
-						System.out.println("\n\n***NÃO FOI POSSÍVEL FINALIZAR A COMPRA, POIS O CARRINHO ESTÁ VAZIO***\n\n");
-					}
+					Pagamento pagamento = new Pagamento();
+					pedido.subTotal();
+					pagamento.setTotalGeral(pedido.getSubTotal());
+					System.out.println(pedido.getSubTotal());
+					System.out.printf("\nTotal Geral: R$ %.2f + IMPOSTO (9%%): R$ %.2f  Total com imposto: R$ %.2f \n",pagamento.getTotalGeral(),pagamento.valorImposto(),pagamento.totalComImposto());
+					
 				}
 			} while (true);
 			
