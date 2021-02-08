@@ -2,11 +2,9 @@ package miniECommerceOO03;
 
 import java.util.Scanner;
 
-import miniECommerceOO.Pagamento;
-
 public class Principal {
 
-public static void main(String[] args) {
+	public static void main(String[] args) {
 		
 		Scanner ler = new Scanner(System.in);
 		
@@ -20,6 +18,7 @@ public static void main(String[] args) {
 		do { //loop principal. Sempre que inicia, os dados do usuário começam zerados
 			Cliente cliente = new Cliente();
 			Pedido pedido = new Pedido();
+			pedido.setCliente(cliente);
 			linha(90);
 			System.out.print("\nPAGUFE PET SHOP\nAqui, seu animal é mais feliz!\n");
 			linha(90);
@@ -50,7 +49,8 @@ public static void main(String[] args) {
 						do {
 							System.out.print("\nQUANTIDADE DO PRODUTO: ");
 							qtdProduto = ler.nextInt();
-							boolean result = pedido.adicionarProdutos(codProduto, indiceEstoque, qtdProduto, estoque);
+							//boolean result = pedido.adicionarProdutos(codProduto, indiceEstoque, qtdProduto, estoque);
+							boolean result = pedido.adicionarProdutos(codProduto, qtdProduto, estoque);
 							linha(90);
 							if (result) {
 								System.out.print("\n\n\n***PRODUTO ADICIONADO AO CARRINHO***\n\n\n");
@@ -80,7 +80,8 @@ public static void main(String[] args) {
 						do {
 							System.out.print("\nQUANTIDADE A REMOVER: ");
 							qtdProduto = ler.nextInt();
-							boolean result = pedido.removerProdutos(codProduto, indiceCarrinho, qtdProduto, estoque);
+							//boolean result = pedido.removerProdutos(codProduto, indiceCarrinho, qtdProduto, estoque);
+							boolean result = pedido.removerProdutos(codProduto, qtdProduto, estoque);
 							linha(90);
 							if (result) {
 								System.out.print("\n\n\n***PRODUTO(S) RETIRADO(S) DO CARRINHO***\n\n\n");
@@ -112,11 +113,62 @@ public static void main(String[] args) {
 				// comando para finalizar a compra
 				else if (comando == 'f') {
 					Pagamento pagamento = new Pagamento();
+					pedido.setPagamento(pagamento);
+					
 					pedido.subTotal();
 					pagamento.setTotalGeral(pedido.getSubTotal());
-					System.out.println(pedido.getSubTotal());
-					System.out.printf("\nTotal Geral: R$ %.2f + IMPOSTO (9%%): R$ %.2f  Total com imposto: R$ %.2f \n",pagamento.getTotalGeral(),pagamento.valorImposto(),pagamento.totalComImposto());
 					
+					System.out.printf("\nTotal Geral: R$ %.2f + IMPOSTO (9%%): R$ %.2f  Total com imposto: R$ %.2f \n",pagamento.getTotalGeral(),pagamento.valorImposto(),pagamento.totalComImposto());
+					System.out.printf("\nEscolha a forma de pagamento\n");
+					System.out.print("\n1- ZERAR CARRINHO");
+					System.out.printf("\n2- A VISTA - 10%% DESCONTO: R$%.2f",pagamento.precoAVista());	
+					System.out.printf("\n3- CARTÃO - 1 VEZ:  R$%.2f SEM DESCONTO", pagamento.precoCartao1Vez());
+					System.out.printf("\n4- CARTÃO - 2 VEZES - JUROS (10%%) - PARCELAS DE:  R$%.2f - TOTAL DE: R$%.2f",(pagamento.precoCartao2Vezes()/2),pagamento.precoCartao2Vezes());
+					System.out.printf("\n5- CARTÃO - 3 VEZES - JUROS (15%%) - PARCELAS DE:  R$%.2f - TOTAL DE: R$%.2f",(pagamento.precoCartao3Vezes()/3),pagamento.precoCartao3Vezes());
+					System.out.print("\n\nInsira Aqui: ");
+					
+					linha(80);
+					try {
+						int opcao = ler.nextInt();
+						if (opcao == 1) {
+							pedido.zerarCarrinho(estoque);
+							System.out.println("Seu carrinho foi zerado!");
+						}
+						else if (opcao == 2) {
+							pagamento.setOpcaoPagamento(opcao);
+							pedido.notaFiscal();
+							System.out.printf("À VISTA - 10%% DESCONTO: R$%.2f",pagamento.precoAVista());
+							System.out.println("\nAgrademos pela compra, "+cliente.tratamento()+" "+cliente.getNome()+". Volte sempre !");
+							break;
+						}
+						else if (opcao == 3) {
+							pagamento.setOpcaoPagamento(opcao);
+							pedido.notaFiscal();
+							System.out.printf("CARTÃO - 1 VEZ:  R$%.2f SEM DESCONTO", pagamento.precoCartao1Vez());
+							System.out.println("\nAgrademos pela compra, "+cliente.tratamento()+" "+cliente.getNome()+". Volte sempre !");
+							break;
+						}
+						else if (opcao == 4) {
+							pagamento.setOpcaoPagamento(opcao);
+							pedido.notaFiscal();
+							System.out.printf("CARTÃO - 2 VEZES - JUROS (10%%) - PARCELAS DE:  R$%.2f - TOTAL DE: R$%.2f",(pagamento.precoCartao2Vezes()/2),pagamento.precoCartao2Vezes());
+							System.out.println("\nAgrademos pela compra, "+cliente.tratamento()+" "+cliente.getNome()+". Volte sempre !");
+							break;
+						}
+						else if (opcao == 5) {
+							pagamento.setOpcaoPagamento(opcao);
+							pedido.notaFiscal();
+							System.out.printf("CARTÃO - 3 VEZES - JUROS (15%%) - PARCELAS DE:  R$%.2f - TOTAL DE: R$%.2f",(pagamento.precoCartao3Vezes()/3),pagamento.precoCartao3Vezes());
+							System.out.println("\nAgrademos pela compra, "+cliente.tratamento()+" "+cliente.getNome()+". Volte sempre !");
+							break;
+						}
+						else {
+							System.out.println("\nOpção inválida!\nTente novamente\n");
+						}
+					}
+					catch (Exception e) {
+						System.out.println("\nÍndice inválido\n");
+					}
 				}
 			} while (true);
 			

@@ -1,19 +1,39 @@
 package miniECommerceOO03;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.text.SimpleDateFormat;
 
 public class Pedido {
+	
+	Date dataHoraAtual = new Date();
+	String data = new SimpleDateFormat("dd/MM/yyyy").format(dataHoraAtual);
+	String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
 	
 	private List <Produto> carrinho = new ArrayList<>();
 	private double subTotal = 0;
 	
+	Pagamento pagamento;
+	Cliente cliente;
+
 	public double getSubTotal() {
 		return subTotal;
 	}
-	
 	public void setSubTotal(double subTotal) {
 		this.subTotal = subTotal;
+	}
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	
 	public int encontrarIndice(String codProduto) {
@@ -31,7 +51,7 @@ public class Pedido {
 	public int qtdProdutosIndice(int indice) {
 		return carrinho.get(indice).getQuantidade();
 	}
-	
+	/*
 	public boolean adicionarProdutos(String codProduto, int iEstoque, int qtdProduto, Estoque estoque) {
 		if (qtdProduto < 0) return false;
 		if (iEstoque < 0) return false; //se o índice é negativo, retorna falso
@@ -52,8 +72,8 @@ public class Pedido {
 		}
 		
 		return true;
-	}
-	
+	}*/
+	/*
 	public boolean removerProdutos(String codProduto, int iCarrinho, int qtdProduto, Estoque estoque) {
 		
 		if (qtdProduto < 0) return false;
@@ -76,6 +96,7 @@ public class Pedido {
 		
 		return true;
 	}
+	*/
 	
 	public void imprimirCarrinho() {
 		System.out.print("\nCARINHO DE COMPRAS:\nCOD PRODUTO\t|\tPreço unitário\t|\tQuantidade\t|\tNome\n");
@@ -83,8 +104,6 @@ public class Pedido {
 			System.out.print(p.getCodigo() + "\t\t|\tR$ " + p.getPrecoUnitario() + "\t\t|\t" + p.getQuantidade() +"\t\t|\t"+p.getNome()+"\n");
 		}
 	}
-	
-	
 	
 	//adiciona produtos sem informar índice do estoque
 	public boolean adicionarProdutos(String codProduto, int qtdProduto, Estoque estoque) {
@@ -106,7 +125,6 @@ public class Pedido {
 			Produto prodCarrinho = carrinho.get(iCarrinho);
 			prodCarrinho.setQuantidade( prodCarrinho.getQuantidade() + qtdProduto );
 		}
-		
 		return true;
 	}
 	
@@ -143,5 +161,31 @@ public class Pedido {
 		}
 		return subTotal;
 	}
-		
+	
+	public void zerarCarrinho(Estoque estoque) {
+		int n = carrinho.size();
+		for(int i = 0; i < n; i++) {
+			Produto p = carrinho.get(i);
+			int qtd = p.getQuantidade();
+			String codigo = p.getCodigo();
+			removerProdutos(codigo, qtd, estoque);
+		}
+	}
+	
+	public void notaFiscal() {
+		System.out.println("\t\tPAGUFE PetShop\n"
+	            +"\t\t NOTA FISCAL\n"
+	            +"\tEndereço, 0000 - Bairro\n"
+	            +"\tSão Paulo - SP - CEP 00000-000\n"
+	            +"CNPJ: XX.XXX.XXX/XXXX-XX\n"
+	            +"----------------------------------------------------\n"
+	            +data+"\t\t\t\t"+hora+"\n"
+	            +"qntd\t preço\t produto \n");
+				for (Produto p : carrinho) 
+				{
+					System.out.print(p.getQuantidade() +"\t"+ p.getPrecoUnitario()+"\t"+p.getNome()+"\n");
+				}
+	           System.out.println("----------------------------------------------------\n"
+	   	            +"total: \t " );
+	}
 }

@@ -18,6 +18,7 @@ public class PrincipalVersaoAlternativa {
 		do { //loop principal. Sempre que inicia, os dados do usuário começam zerados
 			Cliente cliente = new Cliente();
 			Pedido pedido = new Pedido();
+			pedido.setCliente(cliente);
 			linha(90);
 			System.out.print("\nPAGUFE PET SHOP\nAqui, seu animal é mais feliz!\n");
 			linha(90);
@@ -81,12 +82,62 @@ public class PrincipalVersaoAlternativa {
 				}
 				// comando para finalizar a compra
 				else if (comando == 'f') {
-					boolean result = true; //pedido.pagamento(estoque, cliente);
-					if (result) // se result for verdadeiro, sai do loop do usuário
-						break;
-					else { // se result for falso, o carrinho está vazio, por isso não foi possível finalizar. Avisa isso ao usuário 
-						linha(90);
-						System.out.println("\n\n***NÃO FOI POSSÍVEL FINALIZAR A COMPRA, POIS O CARRINHO ESTÁ VAZIO***\n\n");
+					Pagamento pagamento = new Pagamento();
+					pedido.setPagamento(pagamento);
+					
+					pedido.subTotal();
+					pagamento.setTotalGeral(pedido.getSubTotal());
+					
+					System.out.printf("\nTotal Geral: R$ %.2f + IMPOSTO (9%%): R$ %.2f  Total com imposto: R$ %.2f \n",pagamento.getTotalGeral(),pagamento.valorImposto(),pagamento.totalComImposto());
+					System.out.printf("\nEscolha a forma de pagamento\n");
+					System.out.print("\n1- ZERAR CARRINHO");
+					System.out.printf("\n2- A VISTA - 10%% DESCONTO: R$%.2f",pagamento.precoAVista());	
+					System.out.printf("\n3- CARTÃO - 1 VEZ:  R$%.2f SEM DESCONTO", pagamento.precoCartao1Vez());
+					System.out.printf("\n4- CARTÃO - 2 VEZES - JUROS (10%%) - PARCELAS DE:  R$%.2f - TOTAL DE: R$%.2f",(pagamento.precoCartao2Vezes()/2),pagamento.precoCartao2Vezes());
+					System.out.printf("\n5- CARTÃO - 3 VEZES - JUROS (15%%) - PARCELAS DE:  R$%.2f - TOTAL DE: R$%.2f",(pagamento.precoCartao3Vezes()/3),pagamento.precoCartao3Vezes());
+					System.out.print("\n\nInsira Aqui: ");
+					
+					linha(80);
+					try {
+						int opcao = ler.nextInt();
+						if (opcao == 1) {
+							pedido.zerarCarrinho(estoque);
+							System.out.println("Seu carrinho foi zerado!");
+						}
+						else if (opcao == 2) {
+							pagamento.setOpcaoPagamento(opcao);
+							pedido.notaFiscal();
+							System.out.printf("À VISTA - 10%% DESCONTO: R$%.2f",pagamento.precoAVista());
+							System.out.println("\nAgrademos pela compra, "+cliente.tratamento()+" "+cliente.getNome()+". Volte sempre !");
+							break;
+						}
+						else if (opcao == 3) {
+							pagamento.setOpcaoPagamento(opcao);
+							pedido.notaFiscal();
+							System.out.printf("CARTÃO - 1 VEZ:  R$%.2f SEM DESCONTO", pagamento.precoCartao1Vez());
+							System.out.println("\nAgrademos pela compra, "+cliente.tratamento()+" "+cliente.getNome()+". Volte sempre !");
+							break;
+						}
+						else if (opcao == 4) {
+							pagamento.setOpcaoPagamento(opcao);
+							pedido.notaFiscal();
+							System.out.printf("CARTÃO - 2 VEZES - JUROS (10%%) - PARCELAS DE:  R$%.2f - TOTAL DE: R$%.2f",(pagamento.precoCartao2Vezes()/2),pagamento.precoCartao2Vezes());
+							System.out.println("\nAgrademos pela compra, "+cliente.tratamento()+" "+cliente.getNome()+". Volte sempre !");
+							break;
+						}
+						else if (opcao == 5) {
+							pagamento.setOpcaoPagamento(opcao);
+							pedido.notaFiscal();
+							System.out.printf("CARTÃO - 3 VEZES - JUROS (15%%) - PARCELAS DE:  R$%.2f - TOTAL DE: R$%.2f",(pagamento.precoCartao3Vezes()/3),pagamento.precoCartao3Vezes());
+							System.out.println("\nAgrademos pela compra, "+cliente.tratamento()+" "+cliente.getNome()+". Volte sempre !");
+							break;
+						}
+						else {
+							System.out.println("\nOpção inválida!\nTente novamente\n");
+						}
+					}
+					catch (Exception e) {
+						System.out.println("\nÍndice inválido\n");
 					}
 				}
 			} while (true);
