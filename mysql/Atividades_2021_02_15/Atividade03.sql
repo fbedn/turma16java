@@ -5,14 +5,14 @@ create database db_farmacia_do_bem;
 use db_farmacia_do_bem;
 
 create table tb_categoria (
-	id bigint auto_increment,
+    id bigint auto_increment,
     descricao varchar(255) not null,
     ativo boolean not null,
     primary key(id)
 );
 
 create table tb_produto (
-	id bigint auto_increment,
+    id bigint auto_increment,
     nome varchar(255) not null,
     fabricante varchar(255) not null,
     categoria_id bigint,
@@ -23,15 +23,15 @@ create table tb_produto (
 
 insert into tb_categoria (descricao,ativo)
 values
-	("Medicamentos",true),
+    ("Medicamentos",true),
     ("Higiene pessoal",true),
     ("Nutrição",true),
-	("Aparelhos de medição",true),
+    ("Aparelhos de medição",true),
     ("Cosméticos",true);
 
 insert into tb_produto (nome,fabricante,categoria_id,preco)
 values
-	("Acido Acetilsalicílico 500mg 10 comprimidos","Bayer",1,9.00),
+    ("Acido Acetilsalicílico 500mg 10 comprimidos","Bayer",1,9.00),
     ("Dipirona Monoidratada 500mg 10 comprimidos","EMS",1,6.00),
     ("Piroxicam 20mg 15 comprimidos","Neo Química",1,12.00),
     ("Sabonete Dove 90g","Unilever",2,3.00),

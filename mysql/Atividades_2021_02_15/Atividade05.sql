@@ -5,14 +5,14 @@ create database db_construindo_a_nossa_vida;
 use db_construindo_a_nossa_vida;
 
 create table tb_categoria (
-	id bigint auto_increment,
+    id bigint auto_increment,
     descricao varchar(255) not null,
     ativo boolean not null,
     primary key(id)
 );
 
 create table tb_produto (
-	id bigint auto_increment,
+    id bigint auto_increment,
     nome varchar(255) not null,
     fabricante varchar(255) not null,
     categoria_id bigint,
@@ -23,15 +23,15 @@ create table tb_produto (
 
 insert into tb_categoria (descricao,ativo)
 values
-	("Tijolos",true),
+    ("Tijolos",true),
     ("Cimentos e Argamassas",true),
     ("Cerâmicas",true),
-	("Materiais elétricos",true),
+    ("Materiais elétricos",true),
     ("Materiais hidráulicos",true);
 
 insert into tb_produto (nome,fabricante,categoria_id,preco)
 values
-	("Tijolo Comum Vermelho 8,7x4,3x18,6cm","Bauth",1,0.59),
+    ("Tijolo Comum Vermelho 8,7x4,3x18,6cm","Bauth",1,0.59),
     ("Bloco de Concreto Vedação Vazado 19x14x39cm","Blojaf",1,2.10),
     ("Cimento Portland CP II F 32 50kg","Votoran",2,26.90),
     ("Lavatório com Coluna de Chão Sabará Branco 80x46x35cm","Icasa",3,107.30),

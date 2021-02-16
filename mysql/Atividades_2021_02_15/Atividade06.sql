@@ -5,14 +5,14 @@ create database db_curso_da_minha_vida;
 use db_curso_da_minha_vida;
 
 create table tb_categoria (
-	id bigint auto_increment,
+    id bigint auto_increment,
     descricao varchar(255) not null,
     ativo boolean not null,
     primary key(id)
 );
 
 create table tb_curso (
-	id bigint auto_increment,
+    id bigint auto_increment,
     nome varchar(255) not null,
     professor varchar(255) not null,
     categoria_id bigint,
@@ -24,14 +24,14 @@ create table tb_curso (
 insert into tb_categoria (descricao,ativo)
 values
     ("Utilização de Software",true),
-	("Desenvolvimento de Software",true),
+    ("Desenvolvimento de Software",true),
     ("Design",true),
-	("Fotografia e vídeo",true),
+    ("Fotografia e vídeo",true),
     ("Música",true);
 
 insert into tb_curso (nome,professor,categoria_id,preco)
 values
-	("Microsoft Excel: Completo de A a Z","Rafael Santos",1,27.90),
+    ("Microsoft Excel: Completo de A a Z","Rafael Santos",1,27.90),
     ("Microsoft Word Super Completo do Básico ao Avançado","Ricardo Cunha",1,27.90),
     ("Curso React do Básico ao Avançado","Leonardo Leite",2,34.90),
     ("Java do Zero a Maestria","Matheus Batista",2,27.90),
